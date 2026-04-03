@@ -53,13 +53,17 @@
   border: 1px solid #e2e8f0;
   transition: all 0.3s ease;
   cursor: pointer;
+  /* CSS variable for icon color */
+  --icon-color: #f1f5f9;
+  --icon-color-shadow: rgba(0,0,0,0.08);
 }
 
 /* Hover Effect */
 .tool-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-  border-color: #3b82f6;
+  /* Use icon color shadow for visible hover */
+  box-shadow: 0 10px 25px 0 var(--icon-color-shadow);
+  border-color: var(--icon-color);
 }
 
 /* Icon Box */
@@ -72,7 +76,8 @@
   align-items: center;
   justify-content: center;
   font-size: 28px;
-  background: #f1f5f9;
+  background: var(--icon-color);
+  transition: background 0.3s ease;
 }
 
 /* Title inside card */
@@ -109,30 +114,11 @@
   }
 }
 
+/* ===== ICON COLORS & SHADOWS ===== */
 
-
-/* ===== ICON COLORS ===== */
-
-.tool-card:nth-child(1) .tool-icon {
-  background: #dbeafe;
-}
-
-.tool-card:nth-child(2) .tool-icon {
-  background: #dcfce7;
-}
-
-.tool-card:nth-child(3) .tool-icon {
-  background: #fef3c7;
-}
-
-.tool-card:nth-child(4) .tool-icon {
-  background: #ede9fe;
-}
-
-.tool-card:nth-child(5) .tool-icon {
-  background: #fce7f3;
-}
-
-.tool-card:nth-child(6) .tool-icon {
-  background: #cffafe;
-}
+.tool-card:nth-child(1) { --icon-color: #dbeafe; --icon-color-shadow: rgba(191, 219, 254, 0.6); }
+.tool-card:nth-child(2) { --icon-color: #dcfce7; --icon-color-shadow: rgba(187, 247, 208, 0.6); }
+.tool-card:nth-child(3) { --icon-color: #fef3c7; --icon-color-shadow: rgba(254, 243, 199, 0.6); }
+.tool-card:nth-child(4) { --icon-color: #ede9fe; --icon-color-shadow: rgba(237, 233, 254, 0.6); }
+.tool-card:nth-child(5) { --icon-color: #fce7f3; --icon-color-shadow: rgba(252, 231, 243, 0.6); }
+.tool-card:nth-child(6) { --icon-color: #cffafe; --icon-color-shadow: rgba(207, 250, 254, 0.6); }

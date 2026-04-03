@@ -1,6 +1,6 @@
 // src/components/Navbar.jsx
 import React from "react";
-import "./Navbar.css";
+import "../Css/Navbar.css";
 
 function Navbar() {
   return (
@@ -9,9 +9,9 @@ function Navbar() {
 
       <div className="menu">
         <a href="#">Home</a>
+        <a href="#">Toolkit</a>
         <a href="#">Guide</a>
         <a href="#">FAQ</a>
-        <a href="#">Tools</a>
       </div>
 
       <button className="btn">Get Started</button>

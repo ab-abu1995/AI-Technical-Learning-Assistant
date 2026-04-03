@@ -5,7 +5,7 @@ function ToolsSection() {
     <div className="tools-section">
       
       {/* Top Badge */}
-      <div className="badge">✏️ AI STUDY TOOLS</div>
+      <div className="badge">AI STUDY TOOLS</div>
 
       {/* Title */}
       <h1 className="title">
@@ -19,9 +19,9 @@ function ToolsSection() {
       {/* Cards */}
       <div className="tools-grid">
         <ToolCard 
-          icon="📦"
-          title="AI HOMEWORK HELPER"
-          description="Instant answers for any assignment"
+          icon="📂"
+          title="Offline Learning Power"
+          description="Upload your study materials "
         />
 
         <ToolCard 

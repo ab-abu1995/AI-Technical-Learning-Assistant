@@ -1,5 +1,5 @@
 import React from "react";
-import "./Hero.css";
+import "../Css/Hero.css";
 import videoPreview from "../assets/preview.mp4"; // replace with your video file
 
 function Hero() {

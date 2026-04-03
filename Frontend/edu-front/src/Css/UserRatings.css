@@ -1,0 +1,166 @@
+/* ===== USER RATINGS SECTION ===== */
+.ratings-section {
+  background: #f9fafb;
+  padding: 100px 20px;
+  text-align: center;
+  font-family: "Inter", sans-serif;
+}
+
+/* ===== TITLE ===== */
+.ratings-title h2 {
+  font-size: 42px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #1e293b;
+  line-height: 1.2;
+}
+
+.ratings-title h2 span {
+  color: #3b82f6; /* primary accent color */
+}
+
+.ratings-title p {
+  font-size: 16px;
+  color: #64748b;
+  margin-bottom: 60px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+
+/* ===== GRID LAYOUT ===== */
+.ratings-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ===== RATING CARD ===== */
+.rating-card {
+  background: #ffffff;
+  padding: 35px 25px;
+  border-radius: 20px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.rating-card::after {
+  content: "";
+  position: absolute;
+  width: 80px;
+  height: 4px;
+  bottom: 0;
+  border-radius: 2px;
+  background: #3b82f6;
+  opacity: 0;
+  transform: scaleX(0);
+  transition: all 0.4s ease;
+}
+
+.rating-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(59, 130, 246, 0.15);
+}
+
+.rating-card:hover::after {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+/* ===== USER AVATAR ===== */
+.user-avatar {
+  width: 70px;
+  height: 70px;
+  background: #3b82f6;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 22px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 18px;
+  transition: transform 0.4s ease;
+}
+
+.rating-card:hover .user-avatar {
+  transform: scale(1.1);
+}
+
+/* ===== USER NAME ===== */
+.rating-card h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1e293b;
+  margin-bottom: 8px;
+}
+
+/* ===== STARS ===== */
+.stars {
+  color: #fbbf24; /* gold stars */
+  font-size: 18px;
+  margin-bottom: 15px;
+  letter-spacing: 1px;
+}
+
+/* ===== REVIEW TEXT ===== */
+.rating-card p {
+  font-size: 15px;
+  color: #475569;
+  line-height: 1.7;
+  text-align: center;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+  .ratings-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .ratings-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ratings-title h2 {
+    font-size: 30px;
+  }
+
+  .rating-card {
+    padding: 30px 20px;
+  }
+}
+
+/* ===== OPTIONAL: ANIMATION ON SCROLL ===== */
+.rating-card {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.6s forwards;
+}
+
+.rating-card:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.rating-card:nth-child(2) {
+  animation-delay: 0.3s;
+}
+.rating-card:nth-child(3) {
+  animation-delay: 0.5s;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
