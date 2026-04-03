@@ -6,14 +6,14 @@ function Hero() {
   return (
     <div className="hero">
       <div className="left">
-        <p className="tag">⚡ AI-Powered Study Platform</p>
+        <p className="tag">AI-Powered Study Platform</p>
 
         <h1>
-          Edu <span>Lite</span> for <span>education</span>
+          AI <span>Technical</span> Learning <span>Assistance</span>
         </h1>
 
         <p className="desc">
-          AI assistant for homework solving and smart learning.
+          Experience a personalized education journey that follows you from the classroom to your home. Our AI assistant provides 24/7 support, bridging the gap between offline study and online excellence.
         </p>
 
         <div className="buttons">
