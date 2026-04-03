@@ -2,7 +2,6 @@ from fastapi import FastAPI, UploadFile, File, Request
 from fastapi.middleware.cors import CORSMiddleware
 from pypdf import PdfReader
 
-# 🧠 NEW IMPORTS
 from sentence_transformers import SentenceTransformer
 import numpy as np
 
@@ -73,19 +72,19 @@ def generate_answer(text, style):
 
     elif style == "detailed":
         return f"""
-📘 Detailed Explanation:
+Detailed Explanation:
 {text}
 
-🧠 In simple words:
+In simple words:
 {text[:300]}
 """
 
     elif style == "example":
         return f"""
-📘 Explanation:
+Explanation:
 {text}
 
-💡 Example:
+Example:
 Imagine a real-world scenario where this concept is applied.
 """
 
