@@ -226,9 +226,3 @@ git push origin feature-resource-upload
 * Quiz generation from learning materials
 * Personalized study assistance
 * Mobile application support
-
----
-
-# Hackathon Vision
-
-Our goal is to demonstrate how artificial intelligence can transform access to educational resources by providing an intelligent assistant that works both online and offline.
