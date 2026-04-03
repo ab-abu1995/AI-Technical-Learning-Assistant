@@ -1,8 +1,8 @@
-# EduResource AI – Offline & Online Learning Assistant
+# AI Technical learning Assistance – Offline & Online Learning Assistant
 
 ## Project Overview
 
-EduResource AI is an intelligent learning system designed to help students understand technical subjects using educational resources such as lecture notes, textbooks, and PDFs.
+AI Technical learning Assistance is an intelligent learning system designed to help students understand technical subjects using educational resources such as lecture notes, textbooks, and PDFs.
 
 The system stores educational materials in a centralized repository and uses artificial intelligence to analyze those resources. Students can then ask questions and receive explanations generated directly from the stored learning materials.
 
