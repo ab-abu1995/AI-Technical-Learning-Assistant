@@ -1,0 +1,82 @@
+/* src/components/Navbar.css */
+
+/* Fixed Navbar with rounded edges and side margin */
+.navbar {
+  position: fixed;       /* fixed at top */
+  top: 20px;             /* distance from top */
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 60px);  /* full width minus left/right margin */
+  max-width: 900px;
+  margin: 0 15px;        /* small margin on both sides */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  background: white;
+  border-radius: 50px;   /* pill-shaped edges */
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  z-index: 1000;         /* stays above other content */
+}
+
+/* Push page content below navbar to avoid overlap */
+body, main, .content { 
+  padding-top: 100px;  /* adjust depending on navbar height */
+}
+
+/* Logo */
+.logo {
+  font-weight: bold;
+  font-size: 20px;
+  cursor: pointer;
+  transition: transform 0.2s ease, color 0.3s ease;
+}
+
+.logo:hover {
+  transform: scale(1.05);
+  color: #2563eb;
+}
+
+/* Menu Links */
+.menu a {
+  margin: 0 10px;
+  text-decoration: none;
+  color: #555;
+  font-weight: 500;
+  transition: color 0.3s ease, transform 0.2s ease;
+  cursor: pointer;
+}
+
+.menu a:hover {
+  color: #2563eb;
+  transform: translateY(-2px);
+}
+
+/* Button */
+.btn {
+  background: #2563eb;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 50px;   /* pill-shaped button */
+  cursor: pointer;
+  font-weight: 600;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 8px 20px rgba(37, 99, 235, 0.4);
+  background: #1e40af;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 10px 20px;
+    width: calc(100% - 40px);  /* keep small side margin */
+  }
+  .menu a {
+    margin: 0 5px;
+  }
+}
