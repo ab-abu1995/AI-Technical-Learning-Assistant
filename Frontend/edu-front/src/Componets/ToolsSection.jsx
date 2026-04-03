@@ -19,9 +19,9 @@ function ToolsSection() {
       {/* Cards */}
       <div className="tools-grid">
         <ToolCard 
-          icon="📦"
-          title="AI HOMEWORK HELPER"
-          description="Instant answers for any assignment"
+          icon="📂"
+          title="Offline Learning Power"
+          description="Upload your study materials "
         />
 
         <ToolCard 
