@@ -1,10 +1,10 @@
 import React from "react";
 import "../Css/Hero.css";
-import videoPreview from "../assets/preview.mp4"; // replace with your video file
+import previewImage from "../assets/display.webp"; // 👈 your image
 
 function Hero() {
   return (
-    <div className="hero">
+    <div className="hero"  id="hero">
       <div className="left">
         <p className="tag">AI-Powered Study Platform</p>
 
@@ -24,7 +24,8 @@ function Hero() {
 
       <div className="right">
         <div className="iphone-video">
-          <video src={videoPreview} autoPlay loop muted />
+          {/* 👇 Replace video with image */}
+          <img src={previewImage} alt="Preview" />
         </div>
       </div>
     </div>
