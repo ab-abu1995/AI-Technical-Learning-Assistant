@@ -55,41 +55,28 @@ def search_docs(query):
 
     similarities = np.dot(chunk_embeddings, query_embedding)
 
-    # Get top 3 results
-    top_indices = np.argsort(similarities)[-3:][::-1]
+    # Get top 5–10 instead of 3
+    top_indices = np.argsort(similarities)[-8:][::-1]
 
     results = [document_chunks[i] for i in top_indices]
 
-    return " ".join(results)
+    return "\n\n".join(results)
 
 
 def generate_answer(text, style):
     if not text:
         return "I couldn't find anything in the document."
 
-    if style == "short":
-        return f"📘 {text[:200]}..."
-
-    elif style == "detailed":
-        return f"""
+    return f"""
 Detailed Explanation:
+
 {text}
 
-In simple words:
-{text[:300]}
+Key Points:
+- The above content is extracted from the document.
+- It directly relates to your question.
+- Review the full context to understand the concept clearly.
 """
-
-    elif style == "example":
-        return f"""
-Explanation:
-{text}
-
-Example:
-Imagine a real-world scenario where this concept is applied.
-"""
-
-    else:
-        return text
 
 @app.post("/ask")
 async def ask(request: Request):
