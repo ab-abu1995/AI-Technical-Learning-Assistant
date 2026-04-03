@@ -32,7 +32,7 @@ function App() {
           element={
             <>
               <AIInterface />
-              <Footer />
+              
             </>
           }
         />

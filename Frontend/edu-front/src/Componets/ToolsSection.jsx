@@ -2,7 +2,7 @@ import ToolCard from "./ToolCard";
 import "../Css/ToolsSection.css";
 function ToolsSection() {
   return (
-    <div className="tools-section">
+    <div  className="tools-section" id="tool">
       
       {/* Top Badge */}
       <div className="badge">AI STUDY TOOLS</div>
