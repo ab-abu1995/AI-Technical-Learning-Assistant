@@ -5,7 +5,7 @@ function ToolsSection() {
     <div className="tools-section">
       
       {/* Top Badge */}
-      <div className="badge">✏️ AI STUDY TOOLS</div>
+      <div className="badge">AI STUDY TOOLS</div>
 
       {/* Title */}
       <h1 className="title">
