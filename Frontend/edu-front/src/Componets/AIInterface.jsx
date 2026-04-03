@@ -1,3 +1,4 @@
+const API_BASE = "http://127.0.0.1:8000";
 import React, { useState, useRef, useEffect } from 'react';
 import '../Css/AIInterface.css'; // <--- Import your new CSS here
 
@@ -45,53 +46,94 @@ const AIInterface = () => {
       setInput('');
     }
   };
-
-  const handleFileSelect = (e) => {
+  const handleFileSelect = async (e) => {
     const file = e.target.files[0];
-    if (file) {
-      setStagedFile(file);
-      setIsMenuOpen(false);
-    }
+    if (!file) return;
+  
+    setStagedFile(file);
+    setIsMenuOpen(false);
     e.target.value = null;
+  
+    // Send to backend immediately
+    const formData = new FormData();
+    formData.append("file", file);
+  
+    try {
+      const res = await fetch(`${API_BASE}/upload`, {
+        method: "POST",
+        body: formData
+      });
+  
+      const data = await res.json();
+      alert(data.message || data.error);
+    } catch (err) {
+      console.error(err);
+      alert("Upload failed");
+    }
   };
 
-  const handleSend = () => {
+  const handleSend = async () => {
     if (!input.trim() && !stagedFile) return;
-
-    const newUserMsg = { 
+  
+    const userMessage = { 
       role: 'user', 
       content: input, 
       fileName: stagedFile ? stagedFile.name : null 
     };
-    
-    const updatedMessages = [...messages, newUserMsg];
+  
+    const updatedMessages = [...messages, userMessage];
     setMessages(updatedMessages);
+  
     setInput('');
     setStagedFile(null);
-
+  
     let activeChatId = currentChatId;
-    
+  
     if (!activeChatId) {
       activeChatId = Date.now();
       setCurrentChatId(activeChatId);
       const newTitle = input.trim() ? input.substring(0, 20) + '...' : 'File Upload';
-      setChatHistory(prev => [{ id: activeChatId, title: newTitle, messages: updatedMessages }, ...prev]);
+  
+      setChatHistory(prev => [
+        { id: activeChatId, title: newTitle, messages: updatedMessages },
+        ...prev
+      ]);
     } else {
       setChatHistory(prev => prev.map(chat => 
         chat.id === activeChatId ? { ...chat, messages: updatedMessages } : chat
       ));
     }
-
-    setTimeout(() => {
-      const aiResponse = { role: 'ai', content: 'Simulation: Data processed successfully.' };
+  
+    try {
+      const res = await fetch(`${API_BASE}/ask`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          question: input,
+          style: "detailed"
+        })
+      });
+  
+      const data = await res.json();
+  
+      const aiResponse = { role: 'ai', content: data.answer };
+  
       setMessages(prev => {
         const finalMessages = [...prev, aiResponse];
+  
         setChatHistory(history => history.map(chat => 
           chat.id === activeChatId ? { ...chat, messages: finalMessages } : chat
         ));
+  
         return finalMessages;
       });
-    }, 800);
+  
+    } catch (err) {
+      console.error(err);
+      alert("Error getting AI response");
+    }
   };
 
   return (
