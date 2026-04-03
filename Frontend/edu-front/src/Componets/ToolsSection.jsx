@@ -1,0 +1,62 @@
+import ToolCard from "./ToolCard";
+import "../Css/ToolsSection.css";
+function ToolsSection() {
+  return (
+    <div className="tools-section">
+      
+      {/* Top Badge */}
+      <div className="badge">✏️ AI STUDY TOOLS</div>
+
+      {/* Title */}
+      <h1 className="title">
+        EVERYTHING YOU NEED TO <span>ACE YOUR CLASSES</span>
+      </h1>
+
+      <p className="subtitle">
+        Powerful AI tools designed for every part of your academic journey
+      </p>
+
+      {/* Cards */}
+      <div className="tools-grid">
+        <ToolCard 
+          icon="📦"
+          title="AI HOMEWORK HELPER"
+          description="Instant answers for any assignment"
+        />
+
+        <ToolCard 
+          icon="📗"
+          title="AI STUDY GUIDE"
+          description="Comprehensive study materials"
+        />
+
+        <ToolCard 
+          icon="🟨"
+          title="AI FLASHCARD MAKER"
+          description="Memorize concepts faster"
+        />
+
+        <ToolCard 
+          icon="✅"
+          title="AI PRACTICE TEST"
+          description="Prepare for any exam"
+        />
+
+        <ToolCard 
+          icon="✍️"
+          title="AI ESSAY HELPER"
+          description="Write better papers faster"
+        />
+
+        <ToolCard 
+          icon="➗"
+          title="AI MATH SOLVER"
+          description="Step-by-step solutions"
+        />
+      </div>
+
+    </div>
+  );
+}
+
+export default ToolsSection;

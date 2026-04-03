@@ -1,0 +1,138 @@
+/* ===== TOOLS SECTION ===== */
+
+.tools-section {
+  text-align: center;
+  padding: 80px 20px;
+  background: #f8fafc;
+}
+
+/* Badge */
+.badge {
+  display: inline-block;
+  padding: 8px 18px;
+  background: #e0ecff;
+  color: #2563eb;
+  border-radius: 999px;
+  margin-bottom: 20px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* Title */
+.title {
+  font-size: 42px;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 10px;
+}
+
+.title span {
+  color: #3b82f6;
+}
+
+/* Subtitle */
+.subtitle {
+  font-size: 16px;
+  color: #64748b;
+  margin-bottom: 40px;
+}
+
+/* Grid Layout */
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 20px;
+  padding: 0 40px;
+}
+
+/* Card */
+.tool-card {
+  background: #ffffff;
+  padding: 30px 20px;
+  border-radius: 16px;
+  border: 1px solid #e2e8f0;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+/* Hover Effect */
+.tool-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  border-color: #3b82f6;
+}
+
+/* Icon Box */
+.tool-icon {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto 15px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  background: #f1f5f9;
+}
+
+/* Title inside card */
+.tool-card h3 {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #1e293b;
+}
+
+/* Description */
+.tool-card p {
+  font-size: 13px;
+  color: #64748b;
+}
+
+/* ===== RESPONSIVE ===== */
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .tools-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .tools-grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .title {
+    font-size: 28px;
+  }
+}
+
+
+
+/* ===== ICON COLORS ===== */
+
+.tool-card:nth-child(1) .tool-icon {
+  background: #dbeafe;
+}
+
+.tool-card:nth-child(2) .tool-icon {
+  background: #dcfce7;
+}
+
+.tool-card:nth-child(3) .tool-icon {
+  background: #fef3c7;
+}
+
+.tool-card:nth-child(4) .tool-icon {
+  background: #ede9fe;
+}
+
+.tool-card:nth-child(5) .tool-icon {
+  background: #fce7f3;
+}
+
+.tool-card:nth-child(6) .tool-icon {
+  background: #cffafe;
+}
