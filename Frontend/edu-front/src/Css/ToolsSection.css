@@ -151,3 +151,16 @@
 .tool-card {
   transition: all 0.4s ease;
 }
+/* Adds a subtle lift effect when hovering over the clickable tool */
+.clickable-tool-wrapper {
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.clickable-tool-wrapper:hover {
+  transform: translateY(-5px);
+  opacity: 0.9;
+}
+
+.clickable-tool-wrapper:active {
+  transform: translateY(0px);
+}

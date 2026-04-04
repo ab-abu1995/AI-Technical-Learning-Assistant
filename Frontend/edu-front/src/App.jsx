@@ -33,7 +33,7 @@ function App() {
             </>
           }
         />
-        <Route path="/ai" element={<AIInterface />} />
+        <Route path="/ai-interface" element={<AIInterface />} />
       </Routes>
 
       <Login isOpen={isLoginOpen} onClose={closeLogin} />

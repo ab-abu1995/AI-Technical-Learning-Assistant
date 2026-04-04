@@ -255,7 +255,7 @@ const AIInterface = () => {
       <main className="ai-main-content">
         <div className="ai-top-nav">
           <button onClick={toggleSidebar} className="toggle-btn">{isSidebarOpen ? '✕' : '☰'}</button>
-          <span className="logo-text">AI Assistant</span>
+          <span className="logo-text"></span>
         </div>
 
         <div className="messages-container">

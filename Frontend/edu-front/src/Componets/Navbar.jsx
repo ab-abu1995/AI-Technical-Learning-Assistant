@@ -1,4 +1,5 @@
 import React from "react";
+import { NavHashLink } from "react-router-hash-link"; // 👈 Import this
 import "../Css/Navbar.css";
 
 function Navbar({ onGetStarted }) {
@@ -7,13 +8,29 @@ function Navbar({ onGetStarted }) {
       <div className="logo">EduAI</div>
 
       <div className="menu">
-        <a href="#hero">Home</a>
-        <a href="#tool">Toolkit</a>
-         <a href="#aboutus">About us</a>
-        <a href="#faq">FAQ</a> 
+        {/* Use to="/#id" to ensure it works from any page */}
+        <NavHashLink 
+          smooth 
+          to="/#hero" 
+          activeClassName="active"
+        >Home</NavHashLink>
+
+        <NavHashLink 
+          smooth 
+          to="/#tool"
+        >Toolkit</NavHashLink>
+
+        <NavHashLink 
+          smooth 
+          to="/#aboutus"
+        >About us</NavHashLink>
+
+        <NavHashLink 
+          smooth 
+          to="/#faq"
+        >FAQ</NavHashLink> 
       </div>
 
-      {/* This calls the function passed from App.jsx */}
       <button className="btn" onClick={onGetStarted}>
         Get Started
       </button>

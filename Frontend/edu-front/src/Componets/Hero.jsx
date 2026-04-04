@@ -16,10 +16,7 @@ function Hero() {
           Experience a personalized education journey that follows you from the classroom to your home. Our AI assistant provides 24/7 support, bridging the gap between offline study and online excellence.
         </p>
 
-        <div className="buttons">
-          <button className="primary">Try Now</button>
-          <button className="secondary">Learn More</button>
-        </div>
+        
       </div>
 
       <div className="right">
