@@ -1,10 +1,14 @@
+// AIInterface.jsx
 const API_BASE = "http://127.0.0.1:8000";
 import React, { useState, useRef, useEffect } from 'react';
-import '../Css/AIInterface.css'; // <--- Import your new CSS here
+import '../Css/AIInterface.css';
 
 const AIInterface = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [showProfilePopup, setShowProfilePopup] = useState(false);
+  const [showLogoutModal, setShowLogoutModal] = useState(false);
+  const [user, setUser] = useState(null);
   const [chatHistory, setChatHistory] = useState([
     { id: 1, title: 'Research Paper Analysis', messages: [{role: 'user', content: 'Analyze this data.'}, {role: 'ai', content: 'Here is the analysis.'}] },
     { id: 2, title: 'Coding Help', messages: [{role: 'user', content: 'How do I center a div?'}, {role: 'ai', content: 'Use Flexbox!'}] }
@@ -17,13 +21,33 @@ const AIInterface = () => {
   const fileInputRef = useRef(null);
   const photoInputRef = useRef(null);
   const menuRef = useRef(null);
+  const profileMenuRef = useRef(null);
+
+  // Load user data from localStorage on component mount
+  useEffect(() => {
+    const storedUser = localStorage.getItem('user');
+    if (storedUser) {
+      setUser(JSON.parse(storedUser));
+    } else {
+      // Demo user for testing - remove this in production
+      setUser({
+        name: 'John Doe',
+        email: 'john.doe@example.com',
+        picture: null
+      });
+    }
+  }, []);
 
   const toggleSidebar = () => setIsSidebarOpen(!isSidebarOpen);
 
+  // Handle click outside for popups
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (menuRef.current && !menuRef.current.contains(event.target)) {
         setIsMenuOpen(false);
+      }
+      if (profileMenuRef.current && !profileMenuRef.current.contains(event.target)) {
+        setShowProfilePopup(false);
       }
     };
     document.addEventListener("mousedown", handleClickOutside);
@@ -46,6 +70,7 @@ const AIInterface = () => {
       setInput('');
     }
   };
+
   const handleFileSelect = async (e) => {
     const file = e.target.files[0];
     if (!file) return;
@@ -54,7 +79,6 @@ const AIInterface = () => {
     setIsMenuOpen(false);
     e.target.value = null;
   
-    // Send to backend immediately
     const formData = new FormData();
     formData.append("file", file);
   
@@ -136,23 +160,94 @@ const AIInterface = () => {
     }
   };
 
+  const handleLogout = () => {
+    setShowLogoutModal(true);
+    setShowProfilePopup(false);
+  };
+
+  const confirmLogout = () => {
+    setUser(null);
+    localStorage.removeItem('user');
+    localStorage.removeItem('google_token');
+    setShowLogoutModal(false);
+    // Optional: Redirect to login page
+    window.location.href = '/login';
+  };
+
+  const toggleProfilePopup = () => {
+    setShowProfilePopup(!showProfilePopup);
+  };
+
+  // Get user initials for avatar
+  const getUserInitials = () => {
+    if (user?.name) {
+      return user.name.split(' ').map(n => n[0]).join('').toUpperCase();
+    }
+    return 'JD';
+  };
+
   return (
     <div className="ai-container">
       {/* SIDEBAR */}
       <aside className="ai-sidebar" style={{ width: isSidebarOpen ? '260px' : '0px', opacity: isSidebarOpen ? 1 : 0 }}>
-        <div style={{ minWidth: '220px', padding: '20px' }}>
+        <div style={{ minWidth: '220px', padding: '20px', display: 'flex', flexDirection: 'column', height: '100%' }}>
           <button onClick={handleNewChat} className="new-chat-btn">+ New Chat</button>
           <h3 className="history-title">Recent Conversations</h3>
           
-          {chatHistory.map(chat => (
-            <div 
-              key={chat.id} 
-              onClick={() => handleLoadChat(chat.id)}
-              className={`history-item ${currentChatId === chat.id ? 'active' : ''}`}
-            >
-              {chat.title}
-            </div>
-          ))}
+          {/* Chat History List */}
+          <div style={{ flex: 1, overflowY: 'auto', marginBottom: '20px' }}>
+            {chatHistory.map(chat => (
+              <div 
+                key={chat.id} 
+                onClick={() => handleLoadChat(chat.id)}
+                className={`history-item ${currentChatId === chat.id ? 'active' : ''}`}
+              >
+                {chat.title}
+              </div>
+            ))}
+          </div>
+
+          {/* Profile Section at Bottom */}
+          <div className="sidebar-profile-section" ref={profileMenuRef}>
+            <button onClick={toggleProfilePopup} className="sidebar-profile-btn">
+              <div className="sidebar-profile-avatar-initials">
+                {getUserInitials()}
+              </div>
+              <span className="sidebar-profile-name">{user?.name || 'Guest User'}</span>
+            </button>
+
+            {/* Profile Popup */}
+            {showProfilePopup && (
+              <div className="profile-popup-sidebar">
+                <div className="popup-arrow-sidebar"></div>
+                <div className="popup-content-sidebar">
+                  {/* Profile Icon - JD style */}
+                  <div className="popup-profile-icon">
+                    <div className="popup-initials-large">
+                      {getUserInitials()}
+                    </div>
+                  </div>
+
+                  {/* User Details */}
+                  <div className="popup-details">
+                    <div className="detail-row">
+                      <span className="detail-label">Name:</span>
+                      <span className="detail-value">{user?.name || 'Guest User'}</span>
+                    </div>
+                    <div className="detail-row">
+                      <span className="detail-label">Email:</span>
+                      <span className="detail-value">{user?.email || 'guest@example.com'}</span>
+                    </div>
+                  </div>
+
+                  {/* Logout Button */}
+                  <button onClick={handleLogout} className="logout-btn-sidebar">
+                    Logout
+                  </button>
+                </div>
+              </div>
+            )}
+          </div>
         </div>
       </aside>
 
@@ -166,7 +261,7 @@ const AIInterface = () => {
         <div className="messages-container">
           {messages.length === 0 && (
             <div className="welcome-screen">
-              <div className="ai-logo"></div>
+              <div className="ai-logo">🤖</div>
               <h2>Get insights from your uploaded materials.</h2>
             </div>
           )}
@@ -226,6 +321,20 @@ const AIInterface = () => {
           </div>
         </div>
       </main>
+
+      {/* Logout Confirmation Modal */}
+      {showLogoutModal && (
+        <div className="logout-overlay">
+          <div className="logout-modal">
+            <h3>Confirm Logout</h3>
+            <p>Are you sure you want to logout?</p>
+            <div className="modal-buttons">
+              <button onClick={() => setShowLogoutModal(false)} className="cancel-btn">Cancel</button>
+              <button onClick={confirmLogout} className="logout-btn">Logout</button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
