@@ -2,7 +2,7 @@ import ToolCard from "./ToolCard";
 import "../Css/ToolsSection.css";
 function ToolsSection() {
   return (
-    <div className="tools-section">
+    <div  className="tools-section" id="tool">
       
       {/* Top Badge */}
       <div className="badge">AI STUDY TOOLS</div>
@@ -26,13 +26,13 @@ function ToolsSection() {
 
         <ToolCard 
           icon="📗"
-          title="AI STUDY GUIDE"
+          title="Teachers Source Uploader"
           description="Comprehensive study materials"
         />
 
         <ToolCard 
           icon="🟨"
-          title="AI FLASHCARD MAKER"
+          title="Personalized Assistance"
           description="Memorize concepts faster"
         />
 
@@ -42,17 +42,7 @@ function ToolsSection() {
           description="Prepare for any exam"
         />
 
-        <ToolCard 
-          icon="✍️"
-          title="AI ESSAY HELPER"
-          description="Write better papers faster"
-        />
-
-        <ToolCard 
-          icon="➗"
-          title="AI MATH SOLVER"
-          description="Step-by-step solutions"
-        />
+       
       </div>
 
     </div>

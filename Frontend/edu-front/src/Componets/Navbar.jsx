@@ -5,13 +5,13 @@ import "../Css/Navbar.css";
 function Navbar() {
   return (
     <nav className="navbar">
-      <div className="logo">EduLite AI</div>
+      <div className="logo">EduAI</div>
 
       <div className="menu">
-        <a href="#">Home</a>
-        <a href="#">Toolkit</a>
-        <a href="#">Guide</a>
-        <a href="#">FAQ</a>
+        <a href="#hero">Home</a>
+        <a href="#tool">Toolkit</a>
+        {/* <a href="#">Guide</a>
+        <a href="#">FAQ</a> */}
       </div>
 
       <button className="btn">Get Started</button>
