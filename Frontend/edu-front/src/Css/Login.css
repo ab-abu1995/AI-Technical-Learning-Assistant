@@ -1,241 +1,189 @@
-/* Container & Overlay */
+/* 1. Global Reset & Variables */
+:root {
+  --primary-blue: #2969f4;
+  --primary-hover: #1e52c9;
+  --text-main: #1a1a1a;
+  --text-muted: #666666;
+  --bg-input: #f9f9f9;
+  --border-color: #eeeeee;
+  --error-red: #ff4d4d;
+  --white: #ffffff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* 2. Modal Overlay */
 .modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(255, 255, 255, 0.8); /* Light blurred background */
-  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   z-index: 10000;
-}
-
-.auth-container {
-  max-width: 420px;
-  width: 100%;
-  background: #ffffff;
-  border-radius: 2.5rem;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
-  position: relative;
-  border: 1px solid #f0f0f0;
-}
-
-/* Signup Container */
-.signup-container {
-  max-width: 500px;
-  width: 100%;
-  background: #ffffff;
-  border-radius: 2.5rem;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
-  position: relative;
-  border: 1px solid #f0f0f0;
-  max-height: 90vh;
+  padding: 20px;
   overflow-y: auto;
-  animation: modalSlideIn 0.3s ease;
+  animation: fadeIn 0.3s ease-out;
 }
 
-@keyframes modalSlideIn {
-  from {
-    opacity: 0;
-    transform: translateY(-30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* 3. Containers */
+.auth-container, 
+.signup-container {
+  background: var(--white);
+  width: 100%;
+  max-width: 440px;
+  border-radius: 24px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.05), 0 0 1px rgba(0, 0, 0, 0.1);
+  position: relative;
+  margin: auto;
+  overflow: hidden;
+  animation: modalSlideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Custom Scrollbar for Signup Container */
-.signup-container::-webkit-scrollbar {
-  width: 6px;
+.signup-container {
+  max-width: 480px;
 }
 
-.signup-container::-webkit-scrollbar-track {
-  background: #f1f1f1;
-  border-radius: 10px;
-}
-
-.signup-container::-webkit-scrollbar-thumb {
-  background: #ccc;
-  border-radius: 10px;
-}
-
-.signup-container::-webkit-scrollbar-thumb:hover {
-  background: #999;
-}
-
-.auth-panel {
-  padding: 3rem 2.5rem;
-}
-
+/* 4. Panels & Headers */
+.auth-panel, 
 .signup-panel {
   padding: 3rem 2.5rem;
 }
 
-/* Typography */
-.auth-header h1 {
-  font-size: 2.2rem;
-  font-weight: 800;
-  color: #1a1a1a;
-  margin-bottom: 5px;
-}
-
-.auth-header p {
-  color: #888;
-  font-weight: 500;
+.auth-header {
   margin-bottom: 2rem;
-}
-
-/* Form Styling */
-.form-group {
-  margin-bottom: 1.2rem;
   text-align: left;
 }
 
-label {
+.auth-header h1 {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--text-main);
+  letter-spacing: -0.5px;
+  margin-bottom: 0.5rem;
+}
+
+.auth-header p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+/* 5. Form Elements */
+.form-group {
+  margin-bottom: 1.25rem;
+  width: 100%;
+}
+
+.form-group label {
   display: block;
   font-size: 0.85rem;
   font-weight: 600;
-  color: #444;
-  margin-bottom: 8px;
+  color: var(--text-main);
+  margin-bottom: 0.5rem;
+  margin-left: 4px;
 }
 
 .input-field {
   width: 100%;
-  padding: 14px 18px;
-  background: #f9f9f9;
-  border: 1.5px solid #eee;
+  padding: 12px 16px;
+  background: var(--bg-input);
+  border: 1.5px solid transparent;
   border-radius: 12px;
   font-size: 1rem;
-  transition: all 0.3s;
-  font-family: inherit;
+  color: var(--text-main);
+  transition: all 0.2s ease;
 }
 
 .input-field:focus {
-  border-color: #2969f4;
-  background: #fff;
+  background: var(--white);
+  border-color: var(--primary-blue);
+  box-shadow: 0 0 0 4px rgba(41, 105, 244, 0.1);
   outline: none;
-  box-shadow: 0 0 0 3px rgba(41, 105, 244, 0.1);
 }
 
 .input-error {
-  border-color: #ff4d4d;
+  border-color: var(--error-red);
+  background: #fffafa;
 }
 
 .error-msg {
-  color: #ff4d4d;
+  color: var(--error-red);
   font-size: 0.75rem;
+  font-weight: 500;
   margin-top: 5px;
   display: block;
 }
 
-/* Password Requirements Hint */
-.password-hint {
-  font-size: 0.7rem;
-  color: #888;
-  margin-top: 5px;
-  display: block;
-}
-
-/* Normal state */
+/* 6. Buttons */
 .primary-btn-red {
   width: 100%;
   padding: 14px;
-  background: #2969f4 !important;
-  color: white !important;
+  background: var(--primary-blue);
+  color: white;
   border: none;
-  border-radius: 50px;
+  border-radius: 12px;
   font-size: 1rem;
   font-weight: 700;
   cursor: pointer;
-  transition: transform 0.2s, background 0.3s;
+  transition: transform 0.2s, background 0.2s;
+  margin-top: 0.5rem;
 }
 
-/* Hover state */
-.primary-btn-red:hover:not(:disabled) {
-  background: #445bec !important;
-  transform: translateY(-2px);
-}
-
-.primary-btn-red:disabled {
-  opacity: 0.7;
-  cursor: not-allowed;
-  transform: none;
-}
-
-/* Google Button */
-.google-btn-white {
-  width: 100%;
-  padding: 12px;
-  background: white;
-  border: 1.5px solid #eee;
-  border-radius: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s;
-}
-
-.google-btn-white:hover {
-  background: #f5f5f5;
-  border-color: #2969f4;
+.primary-btn-red:hover {
+  background: var(--primary-hover);
   transform: translateY(-1px);
 }
 
-/* Signup Link Container */
-.signup-link-container {
-  margin-top: 16px;
-  margin-bottom: 0;
-  text-align: center;
+.primary-btn-red:active {
+  transform: translateY(0);
 }
 
-.signup-text {
-  color: #888;
-  font-size: 0.85rem;
-  margin: 0;
+.primary-btn-red:disabled {
+  background: #a0bdfa;
+  cursor: not-allowed;
 }
 
-.signup-link-btn {
-  background: none;
-  border: none;
-  color: #2969f4;
-  font-weight: 700;
+/* Google Buttons */
+.google-btn-white {
+  width: 100%;
+  padding: 12px;
+  background: var(--white);
+  border: 1.5px solid var(--border-color);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--text-main);
   cursor: pointer;
-  padding: 0;
-  font-size: 0.85rem;
-  transition: all 0.2s ease;
-  text-decoration: underline;
+  transition: all 0.2s;
 }
 
-.signup-link-btn:hover {
-  color: #445bec;
-  transform: translateX(2px);
+.google-btn-white:hover {
+  background: #fcfcfc;
+  border-color: #d0d0d0;
 }
 
-/* Signup Footer */
-.signup-footer {
-  margin-top: 20px;
-  text-align: center;
-}
-
-.signup-footer p {
-  color: #888;
-  font-size: 0.85rem;
-  margin: 0;
-}
-
-/* UI Elements */
+/* 7. Navigation & Footer */
 .divider {
   display: flex;
   align-items: center;
-  color: #ccc;
-  font-size: 0.8rem;
+  color: #bbb;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
   margin: 1.5rem 0;
 }
 
@@ -243,277 +191,97 @@ label {
   content: "";
   flex: 1;
   height: 1px;
-  background: #eee;
+  background: var(--border-color);
 }
 
-.divider:not(:empty)::before { margin-right: 1rem; }
-.divider:not(:empty)::after { margin-left: 1rem; }
+.divider:not(:empty)::before { margin-right: 1.5rem; }
+.divider:not(:empty)::after { margin-left: 1.5rem; }
 
-.social-footer-icons {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-  margin-top: 2rem;
+.signup-link-container, 
+.signup-footer {
+  margin-top: 1.5rem;
+  text-align: center;
 }
 
-.icon-btn {
+.signup-text, 
+.signup-footer p {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.signup-link-btn {
   background: none;
   border: none;
-  font-size: 1.2rem;
+  color: var(--primary-blue);
+  font-weight: 700;
   cursor: pointer;
-  opacity: 0.6;
-  transition: opacity 0.3s;
+  font-size: 0.9rem;
+  padding: 0 4px;
 }
 
-.icon-btn:hover {
-  opacity: 1;
+.signup-link-btn:hover {
+  text-decoration: underline;
 }
 
-/* Close Modal Button */
+/* Close Button */
 .close-modal {
   position: absolute;
   top: 20px;
   right: 20px;
-  background: none;
+  background: var(--bg-input);
   border: none;
-  font-size: 28px;
+  font-size: 1.5rem;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
   cursor: pointer;
-  color: #999;
-  transition: all 0.3s ease;
-  z-index: 10;
-  width: 32px;
-  height: 32px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 50%;
+  color: var(--text-muted);
+  transition: all 0.2s;
+  z-index: 100;
 }
 
 .close-modal:hover {
-  color: #ff4d4d;
-  transform: rotate(90deg);
-  background: rgba(0, 0, 0, 0.05);
+  background: #eee;
+  color: var(--text-main);
 }
 
-/* Success State */
+/* 8. Success State */
+.text-center { text-align: center; }
+
 .profile-img-success {
-  width: 70px;
-  height: 70px;
-  border-radius: 50%;
-  border: 3px solid #2969f4;
-  margin-bottom: 1rem;
-  object-fit: cover;
+  margin-bottom: 1.5rem;
+  border: 4px solid var(--bg-input);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.05);
 }
 
-.text-center {
-  text-align: center;
+/* 9. Animations */
+@keyframes modalSlideUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-/* Loading Spinner for Button */
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
-.btn-spinner {
-  display: inline-block;
-  width: 18px;
-  height: 18px;
-  border: 2px solid rgba(255, 255, 255, 0.3);
-  border-radius: 50%;
-  border-top-color: white;
-  animation: spin 0.6s linear infinite;
-  margin-right: 8px;
-}
-
-/* Responsive Design */
-@media (max-width: 560px) {
-  .auth-container, .signup-container {
-    max-width: 95%;
-    margin: 0 10px;
-  }
-  
-  .auth-panel, .signup-panel {
+/* 10. Responsive Fixes */
+@media (max-width: 480px) {
+  .auth-panel, 
+  .signup-panel {
     padding: 2rem 1.5rem;
-  }
-  
-  .auth-header h1 {
-    font-size: 1.8rem;
-  }
-  
-  .auth-header p {
-    font-size: 0.85rem;
-  }
-  
-  .primary-btn-red, .google-btn-white {
-    padding: 12px;
-    font-size: 0.9rem;
-  }
-  
-  .input-field {
-    padding: 12px 16px;
-    font-size: 0.9rem;
-  }
-  
-  .form-group label {
-    font-size: 0.8rem;
-  }
-  
-  .signup-text, .signup-footer p {
-    font-size: 0.75rem;
-  }
-  
-  .signup-link-btn {
-    font-size: 0.75rem;
-  }
-  
-  .close-modal {
-    top: 15px;
-    right: 15px;
-    font-size: 24px;
-  }
-}
-
-@media (max-width: 380px) {
-  .auth-panel, .signup-panel {
-    padding: 1.5rem 1.2rem;
   }
   
   .auth-header h1 {
     font-size: 1.5rem;
   }
   
-  .input-field {
-    padding: 10px 14px;
-  }
-  
-  .primary-btn-red, .google-btn-white {
-    padding: 10px;
-    font-size: 0.85rem;
-  }
-  
-  .divider {
-    font-size: 0.7rem;
-    margin: 1rem 0;
-  }
-}
-
-/* Animation for Modal */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-.modal-overlay {
-  animation: fadeIn 0.2s ease;
-}
-
-/* Focus States for Accessibility */
-.input-field:focus-visible {
-  outline: 2px solid #2969f4;
-  outline-offset: 2px;
-}
-
-button:focus-visible {
-  outline: 2px solid #2969f4;
-  outline-offset: 2px;
-}
-
-/* Success State Additional Styles */
-.success-container {
-  text-align: center;
-}
-
-.success-container h1 {
-  font-size: 1.8rem;
-  margin-top: 1rem;
-  margin-bottom: 0.5rem;
-}
-
-.success-container p {
-  color: #888;
-  margin-bottom: 1.5rem;
-}
-
-/* Loading State for Signup Button */
-.primary-btn-red.loading {
-  position: relative;
-  pointer-events: none;
-}
-
-/* Transition Effects */
-.auth-container, .signup-container {
-  transition: all 0.3s ease;
-}
-
-/* Hover Effects for Interactive Elements */
-.history-item, .new-chat-btn {
-  transition: all 0.2s ease;
-}
-
-/* Improved Scrollbar for Signup Container on Mobile */
-@media (max-width: 768px) {
+  .auth-container, 
   .signup-container {
-    max-height: 85vh;
+    border-radius: 20px;
   }
 }
-
-/* Password Strength Indicator (Optional) */
-.password-strength {
-  margin-top: 5px;
-  height: 4px;
-  border-radius: 2px;
-  background: #eee;
-  overflow: hidden;
-}
-
-.password-strength-bar {
-  height: 100%;
-  width: 0%;
-  transition: width 0.3s ease, background 0.3s ease;
-}
-
-.password-strength-bar.weak {
-  width: 33%;
-  background: #ff4d4d;
-}
-
-.password-strength-bar.medium {
-  width: 66%;
-  background: #ffa500;
-}
-
-.password-strength-bar.strong {
-  width: 100%;
-  background: #00c851;
-}
-
-/* Tooltip Styles */
-.tooltip {
-  position: relative;
-  display: inline-block;
-}
-
-.tooltip .tooltip-text {
-  visibility: hidden;
-  background-color: #333;
-  color: #fff;
-  text-align: center;
-  padding: 5px 10px;
-  border-radius: 6px;
-  position: absolute;
-  z-index: 1;
-  bottom: 125%;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 12px;
-  white-space: nowrap;
-}
-
-.tooltip:hover .tooltip-text {
-  visibility: visible;
-}
+/* Centers the "Don't have an account? Sign up" section in Login */

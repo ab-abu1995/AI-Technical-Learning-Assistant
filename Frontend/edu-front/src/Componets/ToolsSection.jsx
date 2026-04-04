@@ -1,8 +1,18 @@
+import React from 'react';
+import { useNavigate } from 'react-router-dom'; 
 import ToolCard from "./ToolCard";
 import "../Css/ToolsSection.css";
+
 function ToolsSection() {
+  const navigate = useNavigate();
+
+  // Navigation handler
+  const handleOcrClick = () => {
+    navigate('/login');
+  };
+
   return (
-    <div  className="tools-section" id="tool">
+    <div className="tools-section" id="tool">
       
       {/* Top Badge */}
       <div className="badge">AI STUDY TOOLS</div>
@@ -16,43 +26,48 @@ function ToolsSection() {
         Powerful AI tools designed for every part of your academic journey
       </p>
 
-    {/* Cards */}
-<div className="tools-grid">
+      {/* Cards Grid */}
+      <div className="tools-grid">
 
-  <div id="ocr">
-    <ToolCard 
-      icon="📂"
-      title="Offline Learning Power"
-      description="Upload your study materials "
-    />
-  </div>
+        {/* This specific card now redirects to Login */}
+        <div 
+          id="ocr" 
+          onClick={handleOcrClick} 
+          style={{ cursor: 'pointer' }}
+          className="clickable-tool-wrapper"
+        >
+          <ToolCard 
+            icon="📂"
+            title="Offline Learning Power"
+            description="Upload your study materials "
+          />
+        </div>
 
-  <div id="quiz">
-    <ToolCard 
-      icon="📗"
-      title="Teachers Source Uploader"
-      description="Comprehensive study materials"
-    />
-  </div>
+        <div id="quiz">
+          <ToolCard 
+            icon="📗"
+            title="Teachers Source Uploader"
+            description="Comprehensive study materials"
+          />
+        </div>
 
-  <div id="feedback">
-    <ToolCard 
-      icon="🟨"
-      title="Personalized Assistance"
-      description="Memorize concepts faster"
-    />
-  </div>
+        <div id="feedback">
+          <ToolCard 
+            icon="🟨"
+            title="Personalized Assistance"
+            description="Memorize concepts faster"
+          />
+        </div>
 
-  <div id="document">
-    <ToolCard 
-      icon="✅"
-      title="AI PRACTICE TEST"
-      description="Prepare for any exam"
-    />
-  </div>
+        <div id="document">
+          <ToolCard 
+            icon="✅"
+            title="AI PRACTICE TEST"
+            description="Prepare for any exam"
+          />
+        </div>
 
-</div>
-
+      </div>
     </div>
   );
 }

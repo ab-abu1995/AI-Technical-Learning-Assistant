@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import { useGoogleLogin } from '@react-oauth/google';
+import { useNavigate } from 'react-router-dom';
 import '../css/Login.css';
 
 const Login = ({ isOpen, onClose }) => {
+  const navigate = useNavigate();
+
   // State for login form
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -20,6 +23,7 @@ const Login = ({ isOpen, onClose }) => {
   const [signupErrors, setSignupErrors] = useState({});
   const [isLoading, setIsLoading] = useState(false);
 
+  // 3. Shared Google Logic for both Login and Signup
   const loginWithGoogle = useGoogleLogin({
     onSuccess: async (tokenResponse) => {
       try {
@@ -27,13 +31,24 @@ const Login = ({ isOpen, onClose }) => {
           headers: { Authorization: `Bearer ${tokenResponse.access_token}` },
         });
         const data = await res.json();
+        
         setUserData(data);
-        console.log("Google User Success:", data);
+        
+        // Save to storage
+        localStorage.setItem('user', JSON.stringify(data));
+        console.log("Google Auth Success:", data);
+        
+        // Redirect after short delay
+        setTimeout(() => {
+          onClose();
+          navigate('/ai-interface'); 
+        }, 1500);
+        
       } catch (err) {
         console.error("Failed to fetch Google profile:", err);
       }
     },
-    onError: () => alert('Google Login Failed'),
+    onError: () => console.error('Google Auth Failed'),
   });
 
   if (!isOpen) return null;
@@ -48,15 +63,17 @@ const Login = ({ isOpen, onClose }) => {
     return Object.keys(tempErrors).length === 0;
   };
 
+  // Manual Login Submission
   const handleLoginSubmit = (e) => {
     e.preventDefault();
     if (validate()) {
-      console.log("Login Attempt:", email);
-      alert(`Logging in with: ${email}`);
+      const loggedInUser = { email: email, name: email.split('@')[0] };
+      localStorage.setItem('user', JSON.stringify(loggedInUser));
+      onClose();
+      navigate('/ai-interface');
     }
   };
 
-  // Fixed Password Validation Logic
   const validatePassword = (password) => {
     const checks = {
       minLength: password.length >= 8,
@@ -65,87 +82,47 @@ const Login = ({ isOpen, onClose }) => {
       hasNumber: /\d/.test(password),
       hasSpecial: /[!@#$%^&*(),.?":{}|<>]/.test(password)
     };
-    
     if (!checks.minLength) return "Password must be at least 8 characters";
     if (!checks.hasLowercase) return "Password must contain at least one lowercase letter";
     if (!checks.hasUppercase) return "Password must contain at least one uppercase letter";
     if (!checks.hasNumber) return "Password must contain at least one number";
     if (!checks.hasSpecial) return "Password must contain at least one special character (!@#$%^&* etc.)";
-    
-    return null; // No error
+    return null;
   };
 
-  // Signup Validation Logic
   const validateSignup = () => {
     let tempErrors = {};
     const emailRegex = /\S+@\S+\.\S+/;
+    if (!signupData.name.trim()) tempErrors.name = "Name is required";
+    if (!signupData.email) tempErrors.email = "Email is required";
+    else if (!emailRegex.test(signupData.email)) tempErrors.email = "Valid email is required";
     
-    // Name validation
-    if (!signupData.name.trim()) {
-      tempErrors.name = "Name is required";
-    } else if (signupData.name.length < 2) {
-      tempErrors.name = "Name must be at least 2 characters";
-    }
-    
-    // Email validation
-    if (!signupData.email) {
-      tempErrors.email = "Email is required";
-    } else if (!emailRegex.test(signupData.email)) {
-      tempErrors.email = "Valid email is required";
-    }
-    
-    // Password validation
-    if (!signupData.password) {
-      tempErrors.password = "Password is required";
-    } else {
+    if (!signupData.password) tempErrors.password = "Password is required";
+    else {
       const passwordError = validatePassword(signupData.password);
-      if (passwordError) {
-        tempErrors.password = passwordError;
-      }
+      if (passwordError) tempErrors.password = passwordError;
     }
-    
-    // Confirm password validation
-    if (!signupData.confirmPassword) {
-      tempErrors.confirmPassword = "Please confirm your password";
-    } else if (signupData.password !== signupData.confirmPassword) {
-      tempErrors.confirmPassword = "Passwords do not match";
-    }
+    if (signupData.password !== signupData.confirmPassword) tempErrors.confirmPassword = "Passwords do not match";
     
     setSignupErrors(tempErrors);
     return Object.keys(tempErrors).length === 0;
   };
 
+  // Manual Signup Submission
   const handleSignupSubmit = async (e) => {
     e.preventDefault();
     if (validateSignup()) {
       setIsLoading(true);
-      
       try {
-        // Simulate API call
         await new Promise(resolve => setTimeout(resolve, 1000));
-        
-        console.log("Signup Data:", signupData);
-        
-        // Store user data in localStorage
-        const newUser = {
-          name: signupData.name,
-          email: signupData.email,
-          picture: null
-        };
+        const newUser = { name: signupData.name, email: signupData.email, picture: null };
         localStorage.setItem('user', JSON.stringify(newUser));
-        
-        alert(`Welcome ${signupData.name}! Please login with your credentials.`);
-        
-        // Close signup modal and reset form
         setShowSignup(false);
         resetSignupForm();
-        
-        // Auto-fill the email in login form
-        setEmail(signupData.email);
-        
+        onClose();
+        navigate('/ai-interface'); 
       } catch (err) {
         console.error("Signup failed:", err);
-        alert("Registration failed. Please try again.");
       } finally {
         setIsLoading(false);
       }
@@ -153,22 +130,14 @@ const Login = ({ isOpen, onClose }) => {
   };
 
   const resetSignupForm = () => {
-    setSignupData({
-      name: '',
-      email: '',
-      password: '',
-      confirmPassword: ''
-    });
+    setSignupData({ name: '', email: '', password: '', confirmPassword: '' });
     setSignupErrors({});
   };
 
   const handleSignupChange = (e) => {
     const { name, value } = e.target;
     setSignupData(prev => ({ ...prev, [name]: value }));
-    // Clear error when user starts typing
-    if (signupErrors[name]) {
-      setSignupErrors(prev => ({ ...prev, [name]: '' }));
-    }
+    if (signupErrors[name]) setSignupErrors(prev => ({ ...prev, [name]: '' }));
   };
 
   const handleCloseSignup = () => {
@@ -185,27 +154,25 @@ const Login = ({ isOpen, onClose }) => {
             <img src={userData.picture} alt="profile" className="profile-img-success" style={{width: '80px', borderRadius: '50%'}} />
             <h1>Hi {userData.name}!</h1>
             <p>Connected: {userData.email}</p>
-            <button className="primary-btn-red" onClick={onClose}>Go to Dashboard</button>
+            <p>Redirecting to AI Interface...</p>
+            <button className="primary-btn-red" onClick={() => navigate('/ai-interface')}>Go to Dashboard Now</button>
           </div>
         </div>
       </div>
     );
   }
 
-  // Default Login View
   return (
     <>
       {/* Login Modal */}
       <div className="modal-overlay" onClick={onClose}>
         <div className="auth-container modal-animate" onClick={(e) => e.stopPropagation()}>
           <button className="close-modal" onClick={onClose}>&times;</button>
-          
           <div className="auth-panel">
             <div className="auth-header">
               <h1>Hi learner</h1>
               <p>Welcome to Edulite AI Assistant</p>
             </div>
-
             <form onSubmit={handleLoginSubmit}>
               <div className="form-group">
                 <label>Email</label>
@@ -218,7 +185,6 @@ const Login = ({ isOpen, onClose }) => {
                 />
                 {errors.email && <span className="error-msg">{errors.email}</span>}
               </div>
-
               <div className="form-group">
                 <label>Password</label>
                 <input 
@@ -230,25 +196,18 @@ const Login = ({ isOpen, onClose }) => {
                 />
                 {errors.password && <span className="error-msg">{errors.password}</span>}
               </div>
-
               <button type="submit" className="primary-btn-red">Login</button>
-
               <div className="signup-link-container">
                 <p className="signup-text">
                   Don't have an account? <button type="button" onClick={() => setShowSignup(true)} className="signup-link-btn">Sign up</button>
                 </p>
               </div>
             </form>
-
             <div className="divider">or</div>
-
             <button type="button" className="google-btn-white" onClick={() => loginWithGoogle()}>
               <img src="https://authjs.dev/img/providers/google.svg" alt="Google" width="20" style={{marginRight: '10px'}} />
               Login with Google
             </button>
-
-            <div className="social-footer-icons" style={{marginTop: '20px', textAlign: 'center'}}>
-            </div>
           </div>
         </div>
       </div>
@@ -258,13 +217,11 @@ const Login = ({ isOpen, onClose }) => {
         <div className="modal-overlay" onClick={handleCloseSignup}>
           <div className="signup-container modal-animate" onClick={(e) => e.stopPropagation()}>
             <button className="close-modal" onClick={handleCloseSignup}>&times;</button>
-            
             <div className="signup-panel">
               <div className="auth-header">
                 <h1>Create Account</h1>
                 <p>Join Edulite AI Assistant today</p>
               </div>
-
               <form onSubmit={handleSignupSubmit}>
                 <div className="form-group">
                   <label>Full Name</label>
@@ -278,7 +235,6 @@ const Login = ({ isOpen, onClose }) => {
                   />
                   {signupErrors.name && <span className="error-msg">{signupErrors.name}</span>}
                 </div>
-
                 <div className="form-group">
                   <label>Email Address</label>
                   <input 
@@ -291,7 +247,6 @@ const Login = ({ isOpen, onClose }) => {
                   />
                   {signupErrors.email && <span className="error-msg">{signupErrors.email}</span>}
                 </div>
-
                 <div className="form-group">
                   <label>Password</label>
                   <input 
@@ -303,11 +258,7 @@ const Login = ({ isOpen, onClose }) => {
                     onChange={handleSignupChange}
                   />
                   {signupErrors.password && <span className="error-msg">{signupErrors.password}</span>}
-                  <small className="password-hint">
-                    Password must contain: 8+ chars, uppercase, lowercase, number & special character
-                  </small>
                 </div>
-
                 <div className="form-group">
                   <label>Confirm Password</label>
                   <input 
@@ -320,40 +271,26 @@ const Login = ({ isOpen, onClose }) => {
                   />
                   {signupErrors.confirmPassword && <span className="error-msg">{signupErrors.confirmPassword}</span>}
                 </div>
-
                 <button type="submit" className="primary-btn-red" disabled={isLoading}>
                   {isLoading ? 'Creating Account...' : 'Sign Up'}
                 </button>
-
-                <div className="signup-footer">
-                  <p>
-                    Already have an account?{' '}
-                    <button 
-                      type="button" 
-                      className="signup-link-btn" 
-                      onClick={() => {
-                        handleCloseSignup();
-                      }}
-                    >
-                      Login here
-                    </button>
-                  </p>
-                </div>
               </form>
 
+              {/* ADDED: Google Sign Up Button */}
               <div className="divider">or</div>
-
-              <button 
-                type="button" 
-                className="google-btn-white" 
-                onClick={() => {
-                  handleCloseSignup();
-                  loginWithGoogle();
-                }}
-              >
+              <button type="button" className="google-btn-white" onClick={() => loginWithGoogle()}>
                 <img src="https://authjs.dev/img/providers/google.svg" alt="Google" width="20" style={{marginRight: '10px'}} />
                 Sign up with Google
               </button>
+
+              <div className="signup-footer">
+                <p>
+                  Already have an account?{' '}
+                  <button type="button" className="signup-link-btn" onClick={handleCloseSignup}>
+                    Login here
+                  </button>
+                </p>
+              </div>
             </div>
           </div>
         </div>
