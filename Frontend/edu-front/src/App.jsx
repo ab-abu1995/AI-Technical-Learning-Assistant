@@ -1,5 +1,5 @@
 import Navbar from "./Componets/Navbar";
- import Hero from "./Componets/Hero";
+import Hero from "./Componets/Hero";
 import ToolsSection from "./Componets/ToolsSection";
 import StatsSection from "./Componets/StatsSection";
 import UserRatings from "./Componets/UserRatings";
