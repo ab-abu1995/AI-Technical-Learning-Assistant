@@ -1,0 +1,123 @@
+:root {
+  --primary-blue: #00a2ff;
+  --bg-light: #f8faff;
+  --text-dark: #333d47;
+  --text-gray: #7d8590;
+  --white: #ffffff;
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.faq-container {
+  max-width: 900px;
+  margin: 50px auto;
+  padding: 20px;
+  font-family: 'Inter', sans-serif;
+  color: var(--text-dark);
+  text-align: center;
+}
+
+/* Header Section */
+.got-questions-btn {
+  background: #e1f3ff;
+  color: var(--primary-blue);
+  border: none;
+  padding: 8px 20px;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 0.75rem;
+  margin-bottom: 25px;
+  cursor: pointer;
+  letter-spacing: 1px;
+}
+
+.faq-header h1 {
+  font-size: 2.5rem;
+  letter-spacing: 2px;
+  font-weight: 800;
+  margin: 10px 0;
+  color: #444;
+}
+
+.faq-header .highlight {
+  color: var(--primary-blue);
+}
+
+.faq-header .subtitle {
+  color: var(--text-gray);
+  font-size: 1.1rem;
+  margin-bottom: 50px;
+}
+
+/* Accordion Styles */
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.faq-item {
+  background: var(--white);
+  border-radius: 12px;
+  padding: 20px 30px;
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(0, 0, 0, 0.02);
+  text-align: left;
+}
+
+.faq-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 35px rgba(0, 162, 255, 0.1);
+}
+
+.faq-question-row {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  position: relative;
+}
+
+.question-icon {
+  background: var(--primary-blue);
+  color: white;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+.question-text {
+  font-weight: 600;
+  font-size: 1.1rem;
+  flex: 1;
+}
+
+.arrow {
+  color: var(--primary-blue);
+  font-size: 0.8rem;
+  transition: transform 0.3s ease;
+}
+
+/* Answer Animation */
+.faq-answer {
+  padding-top: 20px;
+  padding-left: 52px;
+  color: var(--text-gray);
+  line-height: 1.6;
+  animation: fadeIn 0.4s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+
+#faq {
+  scroll-margin-top: 100px; /* adjust this value */
+}

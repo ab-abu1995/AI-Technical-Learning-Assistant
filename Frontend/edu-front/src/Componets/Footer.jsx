@@ -1,8 +1,5 @@
-
 import "../Css/Footer.css";
-import playstore from "../assets/Playstore.webp"; // replace with your icon
-import appstore from "../assets/Appstore.webp";   // replace with your icon
-
+   // replace with your icon
 function Footer() {
   return (
     <footer className="footer-section">
@@ -16,52 +13,47 @@ function Footer() {
         </div>
 
         {/* FOLLOW US */}
-        <div className="footer-box">
-          <h3>Follow Us</h3>
-          <div className="social-icons">
-            <a href="#"><i className="fab fa-facebook-f"></i></a>
-            <a href="#"><i className="fab fa-twitter"></i></a>
-            <a href="#"><i className="fab fa-linkedin-in"></i></a>
-            <a href="#"><i className="fab fa-instagram"></i></a>
-          </div>
-        </div>
+<div className="footer-box">
+  <h3>Follow Us</h3>
+  <div className="social-icons">
+    <a href="https://facebook.com/abiy0747" target="_blank" rel="noopener noreferrer">
+      <i className="fab fa-facebook-f"></i>
+    </a>
 
-        {/* FEATURED ARTICLES */}
-        <div className="footer-box">
-          <h3>Featured Articles</h3>
-          <ul>
-            <li><a href="#">AI in Education</a></li>
-            <li><a href="#">Offline Learning Tools</a></li>
-            <li><a href="#">Study Tips with AI</a></li>
-            <li><a href="#">Quizzes & Practice</a></li>
-          </ul>
-        </div>
+    <a href="https://twitter.com/abiy0747" target="_blank" rel="noopener noreferrer">
+      <i className="fab fa-twitter"></i>
+    </a>
 
-        {/* TOOLS */}
-        <div className="footer-box">
-          <h3>Tools</h3>
-          <ul>
-            <li><a href="#">OCR Homework Solver</a></li>
-            <li><a href="#">AI Quiz Generator</a></li>
-            <li><a href="#">Topic Tracker</a></li>
-            <li><a href="#">Revision Planner</a></li>
-          </ul>
-        </div>
+    <a href="https://linkedin.com/in/abiy0747" target="_blank" rel="noopener noreferrer">
+      <i className="fab fa-linkedin-in"></i>
+    </a>
+
+    <a href="https://instagram.com/abiy0747" target="_blank" rel="noopener noreferrer">
+      <i className="fab fa-instagram"></i>
+    </a>
+  </div>
+</div>
+
+       {/* QUICK LINKS */}
+<div className="footer-box">
+  <h3>Quick Links</h3>
+  <ul>
+    <li><a href="#ocr">Offline Learning Power</a></li>
+    <li><a href="#quiz">Teacher source uploader</a></li>
+    <li><a href="#feedback">Personalized Assistance</a></li>
+    <li><a href="#document">AI Practice Test</a></li>
+  </ul>
+</div>
+
+       
 
         {/* WHO WE ARE */}
         <div className="footer-box">
           <h3>Who We Are</h3>
-          <p>AI Technical Learning is dedicated to providing smart offline & online learning solutions for students worldwide.</p>
+          <p>AI Technical Learning empowers students worldwide with smart, AI-driven offline and online learning solutions designed to enhance understanding, boost performance, and accelerate success.</p>
         </div>
 
-        {/* DOWNLOAD APP */}
-        <div className="footer-box">
-          <h3>Download App</h3>
-          <div className="download-buttons">
-            <a href="#"><img src={playstore} alt="Playstore" /></a>
-            <a href="#"><img src={appstore} alt="Appstore" /></a>
-          </div>
-        </div>
+    
       </div>
 
       <div className="footer-bottom">

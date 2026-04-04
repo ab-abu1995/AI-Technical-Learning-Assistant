@@ -1,4 +1,4 @@
-/* AIInterface.css - Complete File */
+/* AIInterface.css - Complete File with Enhanced Responsiveness */
 
 .ai-container {
   display: flex;
@@ -654,20 +654,54 @@
 }
 
 /* ============================================ */
-/* RESPONSIVE DESIGN */
+/* ENHANCED RESPONSIVE DESIGN */
 /* ============================================ */
 
-@media (max-width: 1024px) {
+/* Large Desktop (1200px and above) */
+@media (min-width: 1200px) {
+  .messages-container {
+    padding: 20px 25%;
+  }
+  
+  .input-wrapper {
+    padding: 10px 25% 30px;
+  }
+}
+
+/* Desktop (992px to 1199px) */
+@media (min-width: 992px) and (max-width: 1199px) {
+  .messages-container {
+    padding: 20px 15%;
+  }
+  
+  .input-wrapper {
+    padding: 10px 15% 30px;
+  }
+}
+
+/* Tablet Landscape (768px to 991px) */
+@media (min-width: 768px) and (max-width: 991px) {
   .messages-container {
     padding: 20px 10%;
   }
   
   .input-wrapper {
-    padding: 10px 10% 30px;
+    padding: 10px 10% 25px;
+  }
+  
+  .chat-bubble {
+    max-width: 85%;
+    padding: 12px 16px;
+    font-size: 0.95rem;
+  }
+  
+  .welcome-screen h2 {
+    font-size: 1.3rem;
   }
 }
 
-@media (max-width: 768px) {
+/* Tablet Portrait (576px to 767px) */
+@media (min-width: 576px) and (max-width: 767px) {
   .ai-container {
     height: calc(100vh - 60px);
   }
@@ -684,6 +718,14 @@
     max-width: 90%;
     padding: 10px 14px;
     font-size: 0.9rem;
+  }
+  
+  .welcome-screen {
+    margin-top: 10vh;
+  }
+  
+  .welcome-screen h2 {
+    font-size: 1.2rem;
   }
   
   /* Profile Popup Responsive */
@@ -727,23 +769,50 @@
     padding: 20px;
     margin: 20px;
   }
+  
+  .ai-top-nav {
+    padding: 10px 16px;
+  }
+  
+  .toggle-btn {
+    font-size: 1.1rem;
+  }
+  
+  .logo-text {
+    font-size: 1rem;
+  }
 }
 
-@media (max-width: 480px) {
+/* Mobile Landscape (481px to 575px) */
+@media (min-width: 481px) and (max-width: 575px) {
+  .ai-container {
+    height: calc(100vh - 60px);
+  }
+  
   .messages-container {
-    padding: 15px 3%;
+    padding: 15px 4%;
   }
   
   .input-wrapper {
-    padding: 10px 3% 15px;
+    padding: 10px 4% 15px;
   }
   
   .chat-bubble {
-    max-width: 95%;
+    max-width: 92%;
+    padding: 10px 12px;
+    font-size: 0.88rem;
   }
   
-  .user-bubble, .ai-bubble {
-    font-size: 0.85rem;
+  .welcome-screen {
+    margin-top: 8vh;
+  }
+  
+  .welcome-screen h2 {
+    font-size: 1.1rem;
+  }
+  
+  .ai-logo {
+    font-size: 2.5rem;
   }
   
   /* Profile Popup Mobile */
@@ -760,18 +829,18 @@
   }
   
   .popup-content-sidebar {
-    padding: 16px 12px 12px;
+    padding: 18px 14px 14px;
   }
   
   .popup-initials-large {
-    width: 60px;
-    height: 60px;
-    font-size: 24px;
+    width: 65px;
+    height: 65px;
+    font-size: 26px;
   }
   
   .popup-details {
     padding: 12px;
-    margin-bottom: 16px;
+    margin-bottom: 18px;
   }
   
   .detail-row {
@@ -779,17 +848,310 @@
   }
   
   .detail-label {
-    width: 40px;
-    font-size: 0.75rem;
+    width: 42px;
+    font-size: 0.78rem;
   }
   
   .detail-value {
+    font-size: 0.83rem;
+  }
+  
+  .logout-btn-sidebar {
+    padding: 10px;
+    font-size: 0.88rem;
+  }
+  
+  .ai-top-nav {
+    padding: 8px 12px;
+  }
+  
+  .toggle-btn {
+    font-size: 1rem;
+  }
+  
+  .logo-text {
+    font-size: 0.95rem;
+  }
+  
+  .plus-btn, .send-btn {
+    width: 32px;
+    height: 32px;
+    font-size: 1.2rem;
+  }
+  
+  .text-input {
+    font-size: 0.9rem;
+    padding: 8px;
+  }
+}
+
+/* Mobile Portrait (320px to 480px) */
+@media (max-width: 480px) {
+  .ai-container {
+    height: calc(100vh - 60px);
+  }
+  
+  .messages-container {
+    padding: 15px 3%;
+  }
+  
+  .input-wrapper {
+    padding: 10px 3% 15px;
+  }
+  
+  .chat-bubble {
+    max-width: 95%;
+    padding: 8px 12px;
+    font-size: 0.85rem;
+  }
+  
+  .user-bubble, .ai-bubble {
+    font-size: 0.85rem;
+  }
+  
+  .welcome-screen {
+    margin-top: 8vh;
+  }
+  
+  .welcome-screen h2 {
+    font-size: 1rem;
+    padding: 0 20px;
+  }
+  
+  .ai-logo {
+    font-size: 2rem;
+  }
+  
+  /* Profile Popup Mobile */
+  .sidebar-profile-section {
+    padding-top: 12px;
+  }
+  
+  .sidebar-profile-btn {
+    padding: 8px;
+    gap: 8px;
+  }
+  
+  .sidebar-profile-avatar-initials {
+    width: 30px;
+    height: 30px;
+    font-size: 11px;
+  }
+  
+  .sidebar-profile-name {
     font-size: 0.8rem;
+  }
+  
+  .profile-popup-sidebar {
+    bottom: 55px;
+    left: 8px;
+    right: 8px;
+    border-radius: 14px;
+  }
+  
+  .popup-content-sidebar {
+    padding: 16px 12px 12px;
+  }
+  
+  .popup-profile-icon {
+    margin-bottom: 16px;
+  }
+  
+  .popup-initials-large {
+    width: 55px;
+    height: 55px;
+    font-size: 22px;
+  }
+  
+  .popup-details {
+    padding: 10px;
+    margin-bottom: 16px;
+    border-radius: 10px;
+  }
+  
+  .detail-row {
+    margin-bottom: 6px;
+  }
+  
+  .detail-label {
+    width: 38px;
+    font-size: 0.72rem;
+  }
+  
+  .detail-value {
+    font-size: 0.78rem;
   }
   
   .logout-btn-sidebar {
     padding: 10px;
     font-size: 0.85rem;
+  }
+  
+  .logout-modal {
+    width: 90%;
+    max-width: 280px;
+    padding: 20px;
+    margin: 20px;
+  }
+  
+  .logout-modal h3 {
+    font-size: 1.1rem;
+  }
+  
+  .logout-modal p {
+    font-size: 0.9rem;
+  }
+  
+  .modal-buttons {
+    gap: 10px;
+  }
+  
+  .cancel-btn, .logout-btn {
+    padding: 8px 16px;
+    font-size: 0.85rem;
+  }
+  
+  /* Navigation */
+  .ai-top-nav {
+    padding: 8px 12px;
+    gap: 12px;
+  }
+  
+  .toggle-btn {
+    font-size: 1rem;
+  }
+  
+  .logo-text {
+    font-size: 0.9rem;
+  }
+  
+  /* Input Area */
+  .plus-btn, .send-btn {
+    width: 32px;
+    height: 32px;
+    font-size: 1.1rem;
+  }
+  
+  .text-input {
+    font-size: 0.88rem;
+    padding: 8px;
+  }
+  
+  .input-container {
+    padding: 6px 12px;
+    gap: 8px;
+  }
+  
+  .staged-file-badge {
+    padding: 8px 12px;
+    font-size: 0.85rem;
+  }
+  
+  .popup-menu {
+    width: 180px;
+    bottom: 45px;
+  }
+  
+  .menu-item {
+    padding: 10px;
+    font-size: 0.88rem;
+  }
+}
+
+/* Extra Small Devices (below 320px) */
+@media (max-width: 319px) {
+  .ai-container {
+    height: calc(100vh - 50px);
+  }
+  
+  .messages-container {
+    padding: 10px 2%;
+  }
+  
+  .input-wrapper {
+    padding: 8px 2% 12px;
+  }
+  
+  .chat-bubble {
+    max-width: 98%;
+    padding: 6px 10px;
+    font-size: 0.8rem;
+  }
+  
+  .welcome-screen h2 {
+    font-size: 0.9rem;
+  }
+  
+  .sidebar-profile-name {
+    font-size: 0.75rem;
+  }
+  
+  .sidebar-profile-avatar-initials {
+    width: 28px;
+    height: 28px;
+    font-size: 10px;
+  }
+  
+  .popup-initials-large {
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+  }
+  
+  .detail-label {
+    width: 35px;
+    font-size: 0.7rem;
+  }
+  
+  .detail-value {
+    font-size: 0.75rem;
+  }
+  
+  .logout-btn-sidebar {
+    padding: 8px;
+    font-size: 0.8rem;
+  }
+}
+
+/* Height-based responsive for smaller screens */
+@media (max-height: 600px) {
+  .messages-container {
+    padding: 10px 20%;
+  }
+  
+  .welcome-screen {
+    margin-top: 5vh;
+  }
+  
+  .welcome-screen h2 {
+    font-size: 1rem;
+  }
+  
+  .chat-bubble {
+    padding: 8px 12px;
+  }
+  
+  .input-wrapper {
+    padding: 8px 20% 15px;
+  }
+}
+
+@media (max-height: 500px) and (max-width: 768px) {
+  .welcome-screen {
+    margin-top: 3vh;
+  }
+  
+  .messages-container {
+    padding: 10px 5%;
+  }
+  
+  .input-wrapper {
+    padding: 8px 5% 12px;
+  }
+  
+  .profile-popup-sidebar {
+    max-height: 80vh;
+    overflow-y: auto;
   }
 }
 
@@ -841,4 +1203,39 @@ button:disabled {
 
 .loading {
   animation: pulse 1.5s ease-in-out infinite;
+}
+
+/* Touch-friendly improvements for mobile */
+@media (hover: none) and (pointer: coarse) {
+  .history-item,
+  .new-chat-btn,
+  .sidebar-profile-btn,
+  .menu-item {
+    cursor: default;
+  }
+  
+  .history-item:active,
+  .new-chat-btn:active,
+  .sidebar-profile-btn:active {
+    background-color: #e8e8e8;
+    transform: scale(0.98);
+  }
+}
+
+/* Print styles */
+@media print {
+  .ai-sidebar,
+  .input-wrapper,
+  .ai-top-nav {
+    display: none;
+  }
+  
+  .messages-container {
+    padding: 0;
+  }
+  
+  .chat-bubble {
+    border: 1px solid #ddd;
+    page-break-inside: avoid;
+  }
 }

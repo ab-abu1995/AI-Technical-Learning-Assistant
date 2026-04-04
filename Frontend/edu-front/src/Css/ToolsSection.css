@@ -124,3 +124,30 @@
 .tool-card:nth-child(4) { --icon-color: #ede9fe; --icon-color-shadow: rgba(237, 233, 254, 0.6); }
 .tool-card:nth-child(5) { --icon-color: #fce7f3; --icon-color-shadow: rgba(252, 231, 243, 0.6); }
 .tool-card:nth-child(6) { --icon-color: #cffafe; --icon-color-shadow: rgba(207, 250, 254, 0.6); }
+
+
+
+/* FIX: prevent cards from hiding under top/navbar */
+#ocr,
+#quiz,
+#feedback,
+#document {
+  scroll-margin-top: 120px; /* adjust this value */
+}
+
+#tool {
+  scroll-margin-top: 12px; /* adjust this value */
+}
+
+
+/* GLOW EFFECT */
+.tool-card.glow {
+  border: 2px solid #98a4aa;
+  box-shadow: 0 0 25px rgba(59, 130, 246, 0.7);
+  transform: scale(1.04);
+}
+
+/* smooth animation */
+.tool-card {
+  transition: all 0.4s ease;
+}

@@ -261,7 +261,7 @@ const AIInterface = () => {
         <div className="messages-container">
           {messages.length === 0 && (
             <div className="welcome-screen">
-              <div className="ai-logo">🤖</div>
+              <div className="ai-logo"></div>
               <h2>Get insights from your uploaded materials.</h2>
             </div>
           )}
