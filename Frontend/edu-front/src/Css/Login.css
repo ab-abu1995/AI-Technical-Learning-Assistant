@@ -1,0 +1,284 @@
+/* Login.css - Modern Authentication Flow Styles */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: linear-gradient(145deg, #f6f9fc 0%, #eef2f5 100%);
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+/* main card container */
+.auth-container {
+  max-width: 520px;
+  width: 100%;
+  background: #ffffff;
+  border-radius: 2rem;
+  box-shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.2), 0 1px 2px rgba(0, 0, 0, 0.02);
+  overflow: hidden;
+  transition: all 0.2s ease;
+}
+
+.auth-panel {
+  padding: 2rem 2rem 2.5rem;
+}
+
+/* Header Styles */
+.auth-header {
+  text-align: center;
+  margin-bottom: 1.8rem;
+}
+
+.auth-header h1 {
+  font-size: 1.9rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #1a2a3f, #1e3a5f);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  letter-spacing: -0.3px;
+}
+
+.auth-header p {
+  color: #5c6f87;
+  font-size: 0.95rem;
+  margin-top: 0.5rem;
+  font-weight: 400;
+}
+
+/* Smart Note / Info Banner */
+.smart-note {
+  background: #f0f4f9;
+  padding: 0.85rem 1rem;
+  border-radius: 1.2rem;
+  font-size: 0.85rem;
+  color: #1f3a5f;
+  text-align: center;
+  margin-bottom: 1.8rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border: 1px solid #e2e8f0;
+}
+
+.smart-note span:first-child {
+  font-size: 1.2rem;
+}
+
+/* OR Divider */
+.divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #94a3b8;
+  font-size: 0.75rem;
+  font-weight: 500;
+  margin: 1.5rem 0;
+  gap: 12px;
+}
+
+.divider::before,
+.divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: #e2e8f0;
+}
+
+/* Social Login Buttons */
+.social-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 1.8rem;
+}
+
+.social-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background: white;
+  border: 1px solid #e0e7ef;
+  border-radius: 2rem;
+  padding: 0.8rem 0;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #1e2f3e;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: inherit;
+  width: 100%;
+}
+
+.social-btn:hover {
+  background: #f8fafc;
+  border-color: #cbd5e1;
+  transform: scale(0.99);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+}
+
+.social-btn svg {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+/* Form Styles */
+.form-group {
+  margin-bottom: 1.25rem;
+}
+
+label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #4b5e77;
+  margin-bottom: 0.5rem;
+}
+
+.input-field {
+  width: 100%;
+  padding: 0.9rem 1rem;
+  font-size: 1rem;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 1.2rem;
+  background: #ffffff;
+  font-family: 'Inter', system-ui, sans-serif;
+  transition: all 0.2s;
+  outline: none;
+  color: #0f172a;
+}
+
+.input-field:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+}
+
+/* Forgot Password */
+.forgot-row {
+  text-align: right;
+  margin-bottom: 1.8rem;
+  margin-top: -0.5rem;
+}
+
+.forgot-link {
+  font-size: 0.8rem;
+  color: #3b82f6;
+  text-decoration: none;
+  font-weight: 500;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.forgot-link:hover {
+  text-decoration: underline;
+}
+
+/* Primary Button */
+.primary-btn {
+  background: #0f172a;
+  color: white;
+  width: 100%;
+  padding: 0.9rem 0;
+  border: none;
+  border-radius: 2rem;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.2s;
+  font-family: inherit;
+  margin-top: 0.25rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.primary-btn:hover {
+  background: #1e293b;
+  transform: translateY(-1px);
+}
+
+/* Toggle Section (Login/Signup Switch) */
+.toggle-section {
+  text-align: center;
+  margin-top: 2rem;
+  border-top: 1px solid #edf2f7;
+  padding-top: 1.8rem;
+}
+
+.toggle-text {
+  color: #475569;
+  font-size: 0.9rem;
+}
+
+.toggle-link {
+  background: none;
+  border: none;
+  color: #2563eb;
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+  margin-left: 6px;
+  font-family: inherit;
+  transition: 0.1s;
+}
+
+.toggle-link:hover {
+  color: #1d4ed8;
+  text-decoration: underline;
+}
+
+/* Demo Toast Message */
+.demo-toast {
+  background: #0f172ad9;
+  backdrop-filter: blur(8px);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 40px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  pointer-events: none;
+  transition: opacity 0.2s;
+  font-family: monospace;
+  white-space: nowrap;
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+  .auth-panel {
+    padding: 1.5rem;
+  }
+  
+  .auth-header h1 {
+    font-size: 1.7rem;
+  }
+  
+  .social-btn {
+    padding: 0.7rem 0;
+    font-size: 0.9rem;
+  }
+  
+  .demo-toast {
+    white-space: normal;
+    text-align: center;
+    max-width: 90%;
+    font-size: 0.75rem;
+  }
+}
