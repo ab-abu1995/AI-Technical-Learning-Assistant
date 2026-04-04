@@ -1,8 +1,7 @@
-// src/components/Navbar.jsx
 import React from "react";
 import "../Css/Navbar.css";
 
-function Navbar() {
+function Navbar({ onGetStarted }) {
   return (
     <nav className="navbar">
       <div className="logo">EduAI</div>
@@ -10,11 +9,12 @@ function Navbar() {
       <div className="menu">
         <a href="#hero">Home</a>
         <a href="#tool">Toolkit</a>
-        {/* <a href="#">Guide</a>
-        <a href="#">FAQ</a> */}
       </div>
 
-      <button className="btn">Get Started</button>
+      {/* This calls the function passed from App.jsx */}
+      <button className="btn" onClick={onGetStarted}>
+        Get Started
+      </button>
     </nav>
   );
 }

@@ -1,3 +1,5 @@
+/* AIInterface.css - Complete File */
+
 .ai-container {
   display: flex;
   height: calc(100vh - 70px); /* Adjusting for fixed Navbar */
@@ -29,6 +31,12 @@
   text-align: left;
   font-weight: 600;
   font-size: 0.95rem;
+  transition: all 0.2s ease;
+}
+
+.new-chat-btn:hover {
+  background-color: #f0f0f0;
+  border-color: #3b82f6;
 }
 
 .history-title {
@@ -49,11 +57,17 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  transition: all 0.2s ease;
+}
+
+.history-item:hover {
+  background-color: #e8e8e8;
 }
 
 .history-item.active {
   background-color: #eaeaea;
   font-weight: bold;
+  color: #3b82f6;
 }
 
 /* Main Content Styles */
@@ -78,11 +92,17 @@
   font-size: 1.2rem;
   cursor: pointer;
   color: #666;
+  transition: color 0.2s ease;
+}
+
+.toggle-btn:hover {
+  color: #3b82f6;
 }
 
 .logo-text {
   font-weight: 600;
   font-size: 1.1rem;
+  color: #171717;
 }
 
 /* Messages Area */
@@ -90,6 +110,24 @@
   flex: 1;
   overflow-y: auto;
   padding: 20px 20%;
+}
+
+/* Custom scrollbar */
+.messages-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.messages-container::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.messages-container::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 3px;
+}
+
+.messages-container::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
 }
 
 .welcome-screen {
@@ -122,8 +160,14 @@
   font-size: 1rem;
 }
 
-.user-bubble { background-color: #f4f4f4; }
-.ai-bubble { border: 1px solid #eaeaea; }
+.user-bubble { 
+  background-color: #f4f4f4; 
+}
+
+.ai-bubble { 
+  border: 1px solid #eaeaea;
+  background-color: #fff;
+}
 
 .message-attachment {
   display: inline-block;
@@ -165,6 +209,11 @@
   cursor: pointer;
   font-size: 1rem;
   padding: 0 5px;
+  transition: color 0.2s ease;
+}
+
+.remove-file-btn:hover {
+  color: #ef4444;
 }
 
 .input-container {
@@ -175,6 +224,12 @@
   padding: 8px 14px;
   gap: 10px;
   border: 1px solid #e5e5e5;
+  transition: all 0.2s ease;
+}
+
+.input-container:focus-within {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.1);
 }
 
 .plus-btn {
@@ -189,6 +244,12 @@
   align-items: center;
   justify-content: center;
   color: #555;
+  transition: all 0.2s ease;
+}
+
+.plus-btn:hover {
+  background-color: #f0f0f0;
+  transform: scale(1.05);
 }
 
 .popup-menu {
@@ -229,6 +290,10 @@
   color: #171717;
 }
 
+.text-input::placeholder {
+  color: #999;
+}
+
 .send-btn {
   background-color: #000;
   color: #fff;
@@ -241,17 +306,204 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: opacity 0.2s;
+  transition: all 0.2s ease;
 }
 
+.send-btn:hover:not(:disabled) {
+  background-color: #3b82f6;
+  transform: scale(1.05);
+}
 
+.send-btn:disabled {
+  cursor: not-allowed;
+}
 
+/* ============================================ */
+/* PROFILE SECTION - ENHANCED ORGANIZED LAYOUT */
+/* ============================================ */
 
+.sidebar-profile-section {
+  position: relative;
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid #e5e5e5;
+}
 
+.sidebar-profile-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px;
+  background: transparent;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: #171717;
+}
 
+.sidebar-profile-btn:hover {
+  background-color: #f0f0f0;
+  transform: translateY(-1px);
+}
 
+.sidebar-profile-avatar-initials {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 14px;
+}
 
-/* PROFILE */
+.sidebar-profile-name {
+  flex: 1;
+  text-align: left;
+  font-size: 0.9rem;
+  font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #171717;
+}
+
+/* Profile Popup - Organized Layout */
+.profile-popup-sidebar {
+  position: absolute;
+  bottom: 70px;
+  left: 0;
+  right: 0;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  border: 1px solid #e5e5e5;
+  animation: slideUp 0.3s ease;
+  z-index: 1000;
+  overflow: hidden;
+}
+
+.popup-arrow-sidebar {
+  position: absolute;
+  bottom: -8px;
+  left: 20px;
+  width: 14px;
+  height: 14px;
+  background: white;
+  transform: rotate(45deg);
+  border-right: 1px solid #e5e5e5;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.popup-content-sidebar {
+  padding: 24px 20px 20px 20px;
+  text-align: center;
+}
+
+/* Profile Icon - Large JD Style */
+.popup-profile-icon {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.popup-initials-large {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  font-weight: bold;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* User Details Section */
+.popup-details {
+  margin-bottom: 24px;
+  text-align: left;
+  background: #f8f9fa;
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.detail-row {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+
+.detail-row:last-child {
+  margin-bottom: 0;
+}
+
+.detail-label {
+  width: 50px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #666;
+  flex-shrink: 0;
+}
+
+.detail-value {
+  flex: 1;
+  font-size: 0.9rem;
+  color: #1a1a1a;
+  font-weight: 500;
+  word-break: break-word;
+}
+
+/* Logout Button */
+.logout-btn-sidebar {
+  width: 100%;
+  padding: 12px;
+  background: #ef4444;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.logout-btn-sidebar:hover {
+  background: #dc2626;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+}
+
+.logout-btn-sidebar:active {
+  transform: translateY(0);
+}
+
+/* Animation for popup */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============================================ */
+/* EXISTING PROFILE STYLES (Compatibility) */
+/* ============================================ */
+
 .profile-container {
   position: relative;
   margin-left: auto;
@@ -300,21 +552,10 @@
   justify-content: center;
 }
 
-.menu-item {
-  padding: 10px;
-  cursor: pointer;
-  border-radius: 8px;
-}
+/* ============================================ */
+/* MODAL STYLES */
+/* ============================================ */
 
-.menu-item:hover {
-  background: #334155;
-}
-
-.logout {
-  color: #f87171;
-}
-
-/* MODAL */
 .logout-overlay {
   position: fixed;
   top: 0;
@@ -327,6 +568,16 @@
   align-items: center;
   justify-content: center;
   z-index: 2000;
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .logout-modal {
@@ -335,25 +586,259 @@
   border-radius: 16px;
   text-align: center;
   width: 300px;
+  box-shadow: 0 20px 35px -10px rgba(0, 0, 0, 0.2);
+  animation: modalSlideIn 0.3s ease;
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.logout-modal h3 {
+  margin-bottom: 12px;
+  color: #171717;
+  font-size: 1.25rem;
+}
+
+.logout-modal p {
+  margin-bottom: 20px;
+  color: #666;
 }
 
 .modal-buttons {
   display: flex;
   justify-content: space-between;
+  gap: 12px;
   margin-top: 20px;
 }
 
 .cancel-btn {
+  flex: 1;
   background: #e5e7eb;
+  color: #171717;
   padding: 10px 20px;
   border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.cancel-btn:hover {
+  background: #d1d5db;
+  transform: translateY(-1px);
 }
 
 .logout-btn {
+  flex: 1;
   background: #ef4444;
   color: white;
   padding: 10px 20px;
   border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s ease;
 }
 
+.logout-btn:hover {
+  background: #dc2626;
+  transform: translateY(-1px);
+}
 
+/* ============================================ */
+/* RESPONSIVE DESIGN */
+/* ============================================ */
+
+@media (max-width: 1024px) {
+  .messages-container {
+    padding: 20px 10%;
+  }
+  
+  .input-wrapper {
+    padding: 10px 10% 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .ai-container {
+    height: calc(100vh - 60px);
+  }
+  
+  .messages-container {
+    padding: 20px 5%;
+  }
+  
+  .input-wrapper {
+    padding: 10px 5% 20px;
+  }
+  
+  .chat-bubble {
+    max-width: 90%;
+    padding: 10px 14px;
+    font-size: 0.9rem;
+  }
+  
+  /* Profile Popup Responsive */
+  .profile-popup-sidebar {
+    left: 10px;
+    right: 10px;
+    bottom: 65px;
+  }
+  
+  .popup-content-sidebar {
+    padding: 20px 16px 16px;
+  }
+  
+  .popup-initials-large {
+    width: 70px;
+    height: 70px;
+    font-size: 28px;
+  }
+  
+  .detail-label {
+    width: 45px;
+    font-size: 0.8rem;
+  }
+  
+  .detail-value {
+    font-size: 0.85rem;
+  }
+  
+  .sidebar-profile-name {
+    font-size: 0.85rem;
+  }
+  
+  .sidebar-profile-avatar-initials {
+    width: 32px;
+    height: 32px;
+    font-size: 12px;
+  }
+  
+  .logout-modal {
+    width: 280px;
+    padding: 20px;
+    margin: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .messages-container {
+    padding: 15px 3%;
+  }
+  
+  .input-wrapper {
+    padding: 10px 3% 15px;
+  }
+  
+  .chat-bubble {
+    max-width: 95%;
+  }
+  
+  .user-bubble, .ai-bubble {
+    font-size: 0.85rem;
+  }
+  
+  /* Profile Popup Mobile */
+  .sidebar-profile-section {
+    padding-top: 12px;
+  }
+  
+  .sidebar-profile-btn {
+    padding: 8px;
+  }
+  
+  .profile-popup-sidebar {
+    bottom: 60px;
+  }
+  
+  .popup-content-sidebar {
+    padding: 16px 12px 12px;
+  }
+  
+  .popup-initials-large {
+    width: 60px;
+    height: 60px;
+    font-size: 24px;
+  }
+  
+  .popup-details {
+    padding: 12px;
+    margin-bottom: 16px;
+  }
+  
+  .detail-row {
+    margin-bottom: 8px;
+  }
+  
+  .detail-label {
+    width: 40px;
+    font-size: 0.75rem;
+  }
+  
+  .detail-value {
+    font-size: 0.8rem;
+  }
+  
+  .logout-btn-sidebar {
+    padding: 10px;
+    font-size: 0.85rem;
+  }
+}
+
+/* ============================================ */
+/* UTILITY CLASSES & ADDITIONAL STYLES */
+/* ============================================ */
+
+/* Hover Effects */
+.history-item,
+.new-chat-btn,
+.sidebar-profile-btn,
+.logout-btn-sidebar,
+.cancel-btn,
+.logout-btn {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Focus States for Accessibility */
+.sidebar-profile-btn:focus-visible,
+.new-chat-btn:focus-visible,
+.logout-btn-sidebar:focus-visible,
+.cancel-btn:focus-visible,
+.logout-btn:focus-visible {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+/* Smooth Scrolling */
+.messages-container,
+.sidebar-profile-section {
+  scroll-behavior: smooth;
+}
+
+/* Disabled State */
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Loading State Animation */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.loading {
+  animation: pulse 1.5s ease-in-out infinite;
+}
