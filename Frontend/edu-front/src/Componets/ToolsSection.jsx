@@ -16,34 +16,42 @@ function ToolsSection() {
         Powerful AI tools designed for every part of your academic journey
       </p>
 
-      {/* Cards */}
-      <div className="tools-grid">
-        <ToolCard 
-          icon="📂"
-          title="Offline Learning Power"
-          description="Upload your study materials "
-        />
+    {/* Cards */}
+<div className="tools-grid">
 
-        <ToolCard 
-          icon="📗"
-          title="Teachers Source Uploader"
-          description="Comprehensive study materials"
-        />
+  <div id="ocr">
+    <ToolCard 
+      icon="📂"
+      title="Offline Learning Power"
+      description="Upload your study materials "
+    />
+  </div>
 
-        <ToolCard 
-          icon="🟨"
-          title="Personalized Assistance"
-          description="Memorize concepts faster"
-        />
+  <div id="quiz">
+    <ToolCard 
+      icon="📗"
+      title="Teachers Source Uploader"
+      description="Comprehensive study materials"
+    />
+  </div>
 
-        <ToolCard 
-          icon="✅"
-          title="AI PRACTICE TEST"
-          description="Prepare for any exam"
-        />
+  <div id="feedback">
+    <ToolCard 
+      icon="🟨"
+      title="Personalized Assistance"
+      description="Memorize concepts faster"
+    />
+  </div>
 
-       
-      </div>
+  <div id="document">
+    <ToolCard 
+      icon="✅"
+      title="AI PRACTICE TEST"
+      description="Prepare for any exam"
+    />
+  </div>
+
+</div>
 
     </div>
   );

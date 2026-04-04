@@ -214,8 +214,7 @@ h1 span {
   pointer-events: none;
   border-radius: 60px;
 }
-
-/* Responsive Layout */
+ /* Responsive Layout */
 @media (max-width: 768px) {
   h1 { font-size: 28px; }
   .iphone-video { width: 200px; height: 400px; }
@@ -230,3 +229,8 @@ h1 span {
 @keyframes fadeIn { to { opacity: 1; } }
 @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
 @keyframes slideInLeft { to { opacity: 1; transform: translateX(0); } }
+
+/* FIX: prevent cards from hiding under top/navbar */
+#hero {
+  scroll-margin-top: 90px; /* adjust this value */
+}

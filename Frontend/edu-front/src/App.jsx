@@ -5,12 +5,13 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./Componets/Navbar"; 
 import Hero from "./Componets/Hero";
 import ToolsSection from "./Componets/ToolsSection";
-import StatsSection from "./Componets/StatsSection";
-import UserRatings from "./Componets/UserRatings";
+
 import Footer from "./Componets/Footer";
 import AIInterface from "./Componets/AIInterface";
 import Login from "./Componets/Login"; 
 
+import AboutUs from "./Componets/AboutUs"; 
+ import FAQ from "./Componets/FAQ";
 function App() {
   const [isLoginOpen, setIsLoginOpen] = useState(false);
 
@@ -26,8 +27,8 @@ function App() {
             <>
               <Hero />
               <ToolsSection />
-              <StatsSection />
-              <UserRatings />
+              <AboutUs/>
+              <FAQ/> 
               <Footer />
             </>
           }

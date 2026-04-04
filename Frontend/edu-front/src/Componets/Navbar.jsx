@@ -9,6 +9,8 @@ function Navbar({ onGetStarted }) {
       <div className="menu">
         <a href="#hero">Home</a>
         <a href="#tool">Toolkit</a>
+         <a href="#aboutus">About us</a>
+        <a href="#faq">FAQ</a> 
       </div>
 
       {/* This calls the function passed from App.jsx */}
