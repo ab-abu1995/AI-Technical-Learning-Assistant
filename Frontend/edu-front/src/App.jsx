@@ -11,7 +11,7 @@ import AIInterface from "./Componets/AIInterface";
 import Login from "./Componets/Login"; 
 
 import AboutUs from "./Componets/AboutUs"; 
- import FAQ from "./Componets/FAQ";
+import FAQ from "./Componets/FAQ";
 function App() {
   const [isLoginOpen, setIsLoginOpen] = useState(false);
 
